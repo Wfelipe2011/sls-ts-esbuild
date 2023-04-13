@@ -1,0 +1,25 @@
+service: template-base
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  profile: aws-study
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-esbuild
+
+functions:
+  hello:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+  world:
+    handler: src/handler.world
+    events:
+      - http:
+          path: world
+          method: get
